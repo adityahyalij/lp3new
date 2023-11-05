@@ -1,3 +1,81 @@
+code py
+
+def printSolution(board):
+    N = len(board)
+    for i in range(N):
+        for j in range(N):
+            if board[i][j]:
+                print("Q ", end="")
+            else:
+                print("_ ", end="")
+        print()
+    print("\n")
+
+def isSafe(board, row, col):
+    N = len(board)
+    for i in range(col):
+        if board[row][i]:
+            return False
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j]:
+            return False
+    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        if board[i][j]:
+            return False
+    return True
+
+def solveNQueen(board, col):
+    N = len(board)
+    if col >= N:
+        printSolution(board)
+        return
+    for i in range(N):
+        if isSafe(board, i, col):
+            board[i][col] = 1
+            solveNQueen(board, col + 1)
+            board[i][col] = 0
+
+def main():
+    n = int(input("Enter size of board: "))
+    board = [[0] * n for _ in range(n)]
+    solveNQueen(board, 0)
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+c++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <iostream>
 
 #include <vector>
@@ -57,3 +135,8 @@ int main() {
   solveNQueen(board, 0, n);
   return 0;
 }
+
+
+
+
+
